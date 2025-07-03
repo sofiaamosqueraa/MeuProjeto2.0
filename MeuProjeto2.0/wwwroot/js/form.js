@@ -7,7 +7,6 @@
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ Text: texto }) // com "T" maiúsculo
-git
     });
 
     if (!resposta.ok) {
