@@ -1,0 +1,40 @@
+﻿@model MeuProjeto2._0.Models.TextRequestModel
+
+@{
+    ViewBag.Title = "Formulário Inteligente";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // ou null se não tiveres layout
+}
+
+<h2>Descreve o teu problema</h2>
+
+<textarea id="userInput" rows="5" cols="60" placeholder="Ex: Trabalhei na empresa X, entrei às 10h, saí às 18h, etc."></textarea>
+<button onclick="enviarTexto()">Enviar</button>
+
+<h3>Formulário preenchido</h3>
+
+<form>
+    <div>
+        <label>Data:</label>
+        <input id="data" type="text" />
+    </div>
+    <div>
+        <label>Hora de Início:</label>
+        <input id="horaI" type="text" />
+    </div>
+    <div>
+        <label>Hora de Fim:</label>
+        <input id="horaFim" type="text" />
+    </div>
+    <div>
+        <label>Tempo Ausente:</label>
+        <input id="ausente" type="text" />
+    </div>
+    <div>
+        <label>Descrição das Tarefas:</label>
+        <input id="reg" type="text" />
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/js/form.js"></script>
+}

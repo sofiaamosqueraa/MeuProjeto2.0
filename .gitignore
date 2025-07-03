@@ -1,0 +1,15 @@
+# Ignorar ficheiros temporários e de ambiente
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignorar pastas de build
+bin/
+obj/
+TestResults/
+*.log
+
+# Ignorar appsettings com dados sensíveis
+appsettings.json
