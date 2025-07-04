@@ -2,39 +2,85 @@
 
 @{
     ViewBag.Title = "Formulário Inteligente";
-    Layout = "~/Views/Shared/_Layout.cshtml"; // ou null se não tiveres layout
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Descreve o teu problema</h2>
+<div class="container mt-5 p-5 shadow rounded-5" style="background-color: #fff0f5;">
+    <h2 class="text-center mb-4" style="color: #ce3b78;">✨ Descreve o teu dia</h2>
 
-<textarea id="userInput" rows="5" cols="60" placeholder="Ex: Trabalhei na empresa X, entrei às 10h, saí às 18h, etc."></textarea>
-<button onclick="enviarTexto()">Enviar</button>
+    <div class="mb-4">
+        <textarea id="userInput" class="form-control rounded-4 p-3 shadow-sm" rows="4" placeholder="Ex: Trabalhei na empresa X, entrei às 10h, saí às 18h..."></textarea>
+    </div>
+    <div class="text-center mb-5">
+        <button onclick="enviarTexto()" class="btn btn-lg custom-btn rounded-pill px-5 py-2">Enviar</button>
+    </div>
 
-<h3>Formulário preenchido</h3>
+    <h4 class="text-center mb-4" style="color: #a64ac9;">📄 Formulário Preenchido</h4>
 
-<form>
-    <div>
-        <label>Data:</label>
-        <input id="data" type="text" />
-    </div>
-    <div>
-        <label>Hora de Início:</label>
-        <input id="horaI" type="text" />
-    </div>
-    <div>
-        <label>Hora de Fim:</label>
-        <input id="horaFim" type="text" />
-    </div>
-    <div>
-        <label>Tempo Ausente:</label>
-        <input id="ausente" type="text" />
-    </div>
-    <div>
-        <label>Descrição das Tarefas:</label>
-        <input id="reg" type="text" />
-    </div>
-</form>
+    <form>
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <label for="data" class="form-label">📅 Data</label>
+                <input id="data" type="text" class="form-control rounded-4 shadow-sm" />
+            </div>
+            <div class="col-md-6">
+                <label for="horaI" class="form-label">⏰ Hora de Início</label>
+                <input id="horaI" type="text" class="form-control rounded-4 shadow-sm" />
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <label for="horaFim" class="form-label">🏁 Hora de Fim</label>
+                <input id="horaFim" type="text" class="form-control rounded-4 shadow-sm" />
+            </div>
+            <div class="col-md-6">
+                <label for="ausente" class="form-label">⏳ Tempo Ausente</label>
+                <input id="ausente" type="text" class="form-control rounded-4 shadow-sm" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="reg" class="form-label">📝 Descrição das Tarefas</label>
+            <input id="reg" type="text" class="form-control rounded-4 shadow-sm" />
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     <script src="~/js/form.js"></script>
 }
+
+<style>
+    body {
+        background: linear-gradient(135deg, #ffe0ec, #f0e7ff);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .custom-btn {
+        background-color: #ce3b78;
+        color: white;
+        border: none;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(206, 59, 120, 0.3);
+    }
+
+        .custom-btn:hover {
+            background-color: #b72a67;
+            transform: scale(1.05);
+        }
+
+    .form-label {
+        font-weight: 500;
+        color: #6c3483;
+    }
+
+    .form-control:focus {
+        border-color: #ce3b78;
+        box-shadow: 0 0 8px rgba(206, 59, 120, 0.4);
+    }
+
+    .shadow {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+    }
+</style>
