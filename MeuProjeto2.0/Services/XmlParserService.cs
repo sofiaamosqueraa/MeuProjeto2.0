@@ -15,7 +15,13 @@ namespace MeuProjeto2._0.Services
                 HoraI = root.SelectSingleNode("//HoraI")?.InnerText ?? string.Empty,
                 HoraFim = root.SelectSingleNode("//HoraFim")?.InnerText ?? string.Empty,
                 Ausente = root.SelectSingleNode("//Ausente")?.InnerText ?? string.Empty,
-                Reg = root.SelectSingleNode("//Reg")?.InnerText ?? string.Empty
+                Reg = root.SelectSingleNode("//Reg")?.InnerText ?? string.Empty,
+                Empresa = root.SelectSingleNode("//Empresa")?.InnerText ?? string.Empty,
+                EmpresaDescricao = root.SelectSingleNode("//EmpresaDescricao")?.InnerText ?? string.Empty,
+                PedidoPor = root.SelectSingleNode("//PedidoPor")?.InnerText ?? string.Empty,
+                Pedido = root.SelectSingleNode("//Pedido")?.InnerText ?? string.Empty,
+                Gastos = root.SelectSingleNode("//Gastos")?.InnerText ?? string.Empty,
+                TempoDeslocacao = root.SelectSingleNode("//TempoDeslocacao")?.InnerText ?? string.Empty
             };
         }
     }

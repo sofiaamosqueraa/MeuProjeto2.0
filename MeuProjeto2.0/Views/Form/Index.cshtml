@@ -5,82 +5,140 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5 p-5 shadow rounded-5" style="background-color: #fff0f5;">
-    <h2 class="text-center mb-4" style="color: #ce3b78;">✨ Descreve o teu dia</h2>
+<div class="container mt-5 p-4 bg-white shadow rounded">
+    <h4 class="mb-4 text-dark border-bottom pb-2">Formulário Inteligente</h4>
 
-    <div class="mb-4">
-        <textarea id="userInput" class="form-control rounded-4 p-3 shadow-sm" rows="4" placeholder="Ex: Trabalhei na empresa X, entrei às 10h, saí às 18h..."></textarea>
+    <!-- CAMPO DE TEXTO -->
+    <div class="mb-4 row">
+        <label for="userInput" class="col-sm-2 col-form-label text-end">Texto Descritivo</label>
+        <div class="col-sm-10">
+            <textarea id="userInput" class="form-control" rows="4" placeholder="Ex: Trabalhei na empresa X, entrei às 10h, saí às 18h..."></textarea>
+        </div>
     </div>
-    <div class="text-center mb-5">
-        <button onclick="enviarTexto()" class="btn btn-lg custom-btn rounded-pill px-5 py-2">Enviar</button>
+
+    <div class="text-end mb-4">
+        <button onclick="enviarTexto()" type="button" class="btn btn-primary px-4">Enviar</button>
     </div>
 
-    <h4 class="text-center mb-4" style="color: #a64ac9;">📄 Formulário Preenchido</h4>
+    <!-- TABS -->
+    <ul class="nav nav-tabs mb-3" id="formTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="empresa-tab" data-bs-toggle="tab" data-bs-target="#empresa" type="button" role="tab">Empresa</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="horario-tab" data-bs-toggle="tab" data-bs-target="#horario" type="button" role="tab">Horário</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="descricao-tab" data-bs-toggle="tab" data-bs-target="#descricao" type="button" role="tab">Resumo e Descrição</button>
+        </li>
+    </ul>
 
-    <form>
-        <div class="row g-4 mb-4">
-            <div class="col-md-6">
-                <label for="data" class="form-label">📅 Data</label>
-                <input id="data" type="text" class="form-control rounded-4 shadow-sm" />
-            </div>
-            <div class="col-md-6">
-                <label for="horaI" class="form-label">⏰ Hora de Início</label>
-                <input id="horaI" type="text" class="form-control rounded-4 shadow-sm" />
+    <!-- CONTEÚDO DAS TABS -->
+    <div class="tab-content" id="formTabsContent">
+
+        <!-- TAB EMPRESA -->
+        <div class="tab-pane fade show active" id="empresa" role="tabpanel">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <label for="empresa" class="form-label">Empresa</label>
+                    <input id="empresa" type="text" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label for="empresaDescricao" class="form-label">Descrição da Empresa</label>
+                    <input id="empresaDescricao" type="text" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label for="pedidoPor" class="form-label">Pedido por</label>
+                    <input id="pedidoPor" type="text" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label for="pedido" class="form-label">Pedido</label>
+                    <input id="pedido" type="text" class="form-control" />
+                </div>
             </div>
         </div>
 
-        <div class="row g-4 mb-4">
-            <div class="col-md-6">
-                <label for="horaFim" class="form-label">🏁 Hora de Fim</label>
-                <input id="horaFim" type="text" class="form-control rounded-4 shadow-sm" />
-            </div>
-            <div class="col-md-6">
-                <label for="ausente" class="form-label">⏳ Tempo Ausente</label>
-                <input id="ausente" type="text" class="form-control rounded-4 shadow-sm" />
+        <!-- TAB HORÁRIO -->
+        <div class="tab-pane fade" id="horario" role="tabpanel">
+            <div class="row g-4 mt-1">
+                <div class="col-md-4">
+                    <label for="data" class="form-label">Data</label>
+                    <input id="data" type="date" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label for="horaI" class="form-label">Hora Início</label>
+                    <input id="horaI" type="time" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label for="horaFim" class="form-label">Hora Fim</label>
+                    <input id="horaFim" type="time" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label for="ausente" class="form-label">Tempo Ausente</label>
+                    <input id="ausente" type="text" class="form-control" placeholder="00:00" />
+                </div>
+                <div class="col-md-6">
+                    <label for="tempoDeslocacao" class="form-label">Tempo Deslocação</label>
+                    <input id="tempoDeslocacao" type="text" class="form-control" placeholder="00:00" />
+                </div>
+                <div class="col-md-6">
+                    <label for="gastos" class="form-label">Gastos (€)</label>
+                    <input id="gastos" type="text" class="form-control" />
+                </div>
             </div>
         </div>
 
-        <div class="mb-3">
-            <label for="reg" class="form-label">📝 Descrição das Tarefas</label>
-            <input id="reg" type="text" class="form-control rounded-4 shadow-sm" />
+        <!-- TAB DESCRIÇÃO -->
+        <div class="tab-pane fade" id="descricao" role="tabpanel">
+            <div class="mt-3">
+                <label for="reg" class="form-label">Descrição da Tarefa Externa</label>
+                <textarea id="reg" class="form-control" rows="5" placeholder="Resumo automático da tarefa..."></textarea>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
 
 @section Scripts {
     <script src="~/js/form.js"></script>
 }
 
+<!-- STYLES -->
 <style>
     body {
-        background: linear-gradient(135deg, #ffe0ec, #f0e7ff);
+        background-color: #f4f6f8;
         font-family: 'Segoe UI', sans-serif;
     }
 
-    .custom-btn {
-        background-color: #ce3b78;
-        color: white;
-        border: none;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 4px 10px rgba(206, 59, 120, 0.3);
+    .form-control {
+        font-size: 0.95rem;
+        border-radius: 6px;
     }
-
-        .custom-btn:hover {
-            background-color: #b72a67;
-            transform: scale(1.05);
-        }
 
     .form-label {
         font-weight: 500;
-        color: #6c3483;
+        color: #2c3e50;
     }
 
-    .form-control:focus {
-        border-color: #ce3b78;
-        box-shadow: 0 0 8px rgba(206, 59, 120, 0.4);
+    .btn-primary {
+        background-color: #3a57c4;
+        border-color: #3a57c4;
     }
 
-    .shadow {
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+        .btn-primary:hover {
+            background-color: #2e44a3;
+            border-color: #2e44a3;
+        }
+
+    .nav-tabs .nav-link.active {
+        font-weight: 600;
+        border-bottom: 2px solid #3a57c4;
+    }
+
+    .tab-content {
+        padding-top: 10px;
+    }
+
+    textarea.form-control {
+        resize: vertical;
     }
 </style>

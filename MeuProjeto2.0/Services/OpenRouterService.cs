@@ -20,22 +20,51 @@ namespace MeuProjeto2._0.Services
 
         public async Task<string> GetXmlResponseAsync(string inputText)
         {
+            // Obter hora atual do servidor no formato HH:mm
+            string horaAtual = DateTime.Now.ToString("HH:mm");
+
+            // Substituir expressões vagas pela hora real
+            inputText = inputText
+                .Replace("agora", horaAtual, StringComparison.OrdinalIgnoreCase)
+                .Replace("neste momento", horaAtual, StringComparison.OrdinalIgnoreCase)
+                .Replace("nesta altura", horaAtual, StringComparison.OrdinalIgnoreCase);
+
             string prompt = $@"
-Transforma o seguinte texto numa estrutura XML com os campos abaixo:
+Transforma o seguinte texto numa estrutura XML com os campos abaixo.
 
 Texto:
 ""{inputText}""
 
 Formato esperado:
 <Atividade>
+  <Empresa>Nome da empresa</Empresa>
+  <EmpresaDescricao>Breve descrição da empresa</EmpresaDescricao>
+  <PedidoPor>Nome da pessoa que fez o pedido</PedidoPor>
+  <Pedido>Resumo da tarefa principal a executar</Pedido>
   <Data>YYYY-MM-DD</Data>
   <HoraI>HH:MM</HoraI>
   <HoraFim>HH:MM</HoraFim>
   <Ausente>HH:MM</Ausente>
-  <Reg>Descrição resumida das tarefas</Reg>
+  <Gastos>Valor total em euros</Gastos>
+  <TempoDeslocacao>Duração da deslocação no formato HH:MM</TempoDeslocacao>
+  <Reg>Descrição clara e profissional da tarefa</Reg>
 </Atividade>
 
-Responde apenas com o XML.";
+
+
+- Preenche os campos com base no conteúdo do texto.
+- Para Empresa, escreve o nome da empresa dado.
+- Se não for possível identificar algo, deixa-o vazio.
+- Para EmpresaDescricao, escreve uma descrição genérica da empresa com base no nome, se for conhecida.
+- Para PedidoPor, tenta identificar o nome da pessoa associada ao pedido, ou que confirmou, ou que interagiu diretamente no processo como clientes ou funcionários.
+- A descrição das tarefas deve ser clara, profissional, com frases completas e bem estruturadas.
+- Responde apenas com o XML.
+- Gastos: valor total estimado em euros.
+- TempoDeslocacao: duração real da deslocação no formato HH:MM.
+- O campo Pedido deve ser um resumo claro da principal tarefa.
+";
+
+
 
             var requestBody = new
             {
@@ -44,7 +73,8 @@ Responde apenas com o XML.";
                 {
                     new { role = "system", content = "Tu és um assistente que extrai informação de texto e devolve XML estruturado." },
                     new { role = "user", content = prompt }
-                }
+                },
+                max_tokens = 1000
             };
 
             var content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
