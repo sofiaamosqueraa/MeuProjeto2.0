@@ -20,3 +20,81 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* FORMULÁRIO INTELIGENTE - ESTILO CORPORATIVO */
+
+.container.formulario-inteligente {
+    max-width: 900px;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+}
+
+    .container.formulario-inteligente h4 {
+        font-weight: 600;
+        color: #2c3e50;
+        border-bottom: 2px solid #dee2e6;
+        padding-bottom: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .container.formulario-inteligente .form-control {
+        font-size: 1rem;
+        border-radius: 8px;
+        padding: 10px 12px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.2s ease;
+    }
+
+        .container.formulario-inteligente .form-control:focus {
+            border-color: #3a57c4;
+            box-shadow: 0 0 0 0.2rem rgba(58, 87, 196, 0.1);
+        }
+
+    .container.formulario-inteligente .form-label {
+        font-weight: 600;
+        color: #2d3436;
+        margin-bottom: 6px;
+    }
+
+    .container.formulario-inteligente .btn-primary {
+        background-color: #2d6cdf;
+        border-color: #2d6cdf;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 6px;
+        min-width: 120px;
+    }
+
+        .container.formulario-inteligente .btn-primary:hover {
+            background-color: #245cc1;
+            border-color: #245cc1;
+        }
+
+    .container.formulario-inteligente .nav-tabs .nav-link {
+        color: #495057;
+        font-weight: 500;
+        border: none;
+        padding: 10px 16px;
+    }
+
+        .container.formulario-inteligente .nav-tabs .nav-link.active {
+            color: #2d6cdf;
+            border-bottom: 3px solid #2d6cdf;
+            font-weight: 600;
+        }
+
+    .container.formulario-inteligente .tab-content {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-top: none;
+        padding: 20px;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .container.formulario-inteligente textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+    }

@@ -1,5 +1,10 @@
-﻿public class FormDataModel
+﻿using System.ComponentModel.DataAnnotations;
+
+public class FormDataModel
 {
+    [Key]
+    public int Id { get; set; }
+
     public string Data { get; set; } = string.Empty;
     public string HoraI { get; set; } = string.Empty;
     public string HoraFim { get; set; } = string.Empty;
@@ -11,5 +16,4 @@
     public string Pedido { get; set; } = string.Empty;
     public string Gastos { get; set; } = string.Empty;
     public string TempoDeslocacao { get; set; } = string.Empty;
-
 }

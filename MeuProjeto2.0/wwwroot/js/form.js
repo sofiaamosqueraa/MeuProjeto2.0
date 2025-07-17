@@ -30,6 +30,37 @@
     document.getElementById("pedido").value = data.pedido || "";
     document.getElementById("gastos").value = data.gastos || "";
     document.getElementById("tempoDeslocacao").value = data.tempoDeslocacao || "";
+}
 
+async function guardarFormulario() {
+    const formData = {
+        data: document.getElementById("data").value,
+        horaI: document.getElementById("horaI").value,
+        horaFim: document.getElementById("horaFim").value,
+        ausente: document.getElementById("ausente").value,
+        reg: document.getElementById("reg").value,
+        empresa: document.getElementById("empresa").value,
+        empresaDescricao: document.getElementById("empresaDescricao").value,
+        pedidoPor: document.getElementById("pedidoPor").value,
+        pedido: document.getElementById("pedido").value,
+        gastos: document.getElementById("gastos").value,
+        tempoDeslocacao: document.getElementById("tempoDeslocacao").value
+    };
 
+    try {
+        const response = await fetch('/Form/Guardar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            alert("Formulário guardado com sucesso!");
+        } else {
+            const errorText = await response.text();
+            alert("Erro ao guardar: " + errorText);
+        }
+    } catch (error) {
+        alert("Erro ao guardar: " + error.message);
+    }
 }

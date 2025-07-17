@@ -53,7 +53,8 @@ Formato esperado:
 
 
 - Preenche os campos com base no conteúdo do texto.
-- Para Empresa, escreve o nome da empresa dado.
+- No campo <Empresa>, escreve exatamente o nome da empresa mencionada no texto, mesmo que venha após as palavras ""na empresa"", ""em"", ""visitei"", ""trabalhei para"", etc.
+- Mesmo que o nome da empresa esteja no meio da frase, extrai-o tal como aparece.
 - Se não for possível identificar algo, deixa-o vazio.
 - Para EmpresaDescricao, escreve uma descrição genérica da empresa com base no nome, se for conhecida.
 - Para PedidoPor, tenta identificar o nome da pessoa associada ao pedido, ou que confirmou, ou que interagiu diretamente no processo como clientes ou funcionários.
@@ -104,6 +105,8 @@ Formato esperado:
 
             if (string.IsNullOrWhiteSpace(xmlOutput))
                 throw new Exception("Resposta da API não contém conteúdo válido.");
+
+            Console.WriteLine("XML RECEBIDO DA IA:\n" + xmlOutput);
 
             return xmlOutput.Trim();
         }
